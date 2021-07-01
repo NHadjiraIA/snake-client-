@@ -1,12 +1,20 @@
 
-// fileB.js
-const { myNumber, myString, myFunction }  = require("./client"); 
-const net = require('net');
+ // setup interface to handle user input from stdin 
+ const handleUserInput = function (key) {
+  if (key === '\u0003') {
+    process.exit();
+  };
+  
+}
 
-const server = net.createServer();
+ const setupInput = function () {
+  const stdin = process.stdin; 
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  stdin.on("data", handleUserInput);
+  return stdin;
+};
 
-server.listen(3000, () => {
-  console.log('Server listening on port 3000!');
-});
- 
+module.exports = {setupInput };// stores the function as myFunction
 
