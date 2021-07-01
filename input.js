@@ -30,6 +30,14 @@ const handleUserInput = function (key) {
       connection.write("Move: right");
       break;
     }
+    case 'p':{
+      connection.write("Say: Great game");
+      break;
+    }
+    case 'i':{
+      connection.write("Say: So much fun!");
+      break;
+    }
   }
 
   if (key === '\u0003') {
