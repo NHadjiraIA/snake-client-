@@ -1,5 +1,5 @@
 const net = require("net");
-const {setupInput} = require("./input"); 
+
 // establishes a connection with the game server
 const connect = function () {
   const conn = net.createConnection({
@@ -15,21 +15,6 @@ const connect = function () {
     console.log("Successfully connected to game server"); 
     // send string as a data for server 
     conn.write(`Name: ${myName}`);
-
-    setInterval(() => { 
-      conn.write(`Move: down`);
-    }, 500);
-    
-    setInterval(() => {
-      conn.write(`Move: left`);
-       
-    }, 800);
-   
-    setInterval(() => {
-      conn.write(`Move: right`);
-      
-    }, 800);
-    setupInput();
   }); 
 
   conn.on('data', (data) => {
